@@ -1,0 +1,44 @@
+#include <bits/stdc++.h> 
+using namespace std; 
+
+void result(string& input) 
+{ 
+	int n = input.length(); 
+
+	bool LowerChar = false;
+	bool UpperChar = false; 
+	bool DigitChar = false;
+	bool SpecialChar = false; 
+	string normalChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "; 
+
+	for (int i=0;i<n;i++) 
+	{ 
+		if (islower(input[i])) 
+			LowerChar = true; 
+		else if (isupper(input[i])) 
+			UpperChar = true; 
+		else if (isdigit(input[i])) 
+			DigitChar = true; 
+		else
+		    SpecialChar=true;
+		
+	} 
+
+
+	cout<<"\n Strength of password: "; 
+	if(LowerChar && UpperChar && DigitChar && SpecialChar && (n >= 8)) 
+		cout<<"Strong"<<endl; 
+	else if ((LowerChar || UpperChar) && SpecialChar && (n >= 6)) 
+		cout<<"Moderate"<<endl; 
+	else
+		cout<<"Weak"<<endl; 
+}
+
+int main() 
+{ 
+    string input;
+    cout<<"Enter Password:";
+    cin>>input; 
+	result(input); 
+	return 0; 
+}
